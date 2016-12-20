@@ -11,6 +11,7 @@
 	#{'name': 'Germany', 'sea': True, 'schengen': True, 'average_temperature': 5, 'currency_rate': 80},
 	#{'name': 'Japan', 'sea': True, 'schengen': False, 'average_temperature': 15, 'currency_rate': 0.61}
 	#]
+from pprint import pprint
 
 def save_json(data):
 	import json
@@ -95,6 +96,55 @@ countries = {
 				'currency_rate': 80,
 				'cost_of_a_day': 38}
 	}
+
+
+
+def read_json():
+	import json
+	with open('all_coutries.json') as countries_file:
+		countries = json.load(countries_file)
+		return countries
+
+def change_types(parametres):
+	if parametres['sea'] == 'True':
+		parametres['sea'] = True
+	else:
+		parametres['sea'] = False
+#	parametres['sea'] = bool(parametres['sea'])  Почему-то всегда устанавливает True
+	if parametres['schengen'] == 'True':
+		parametres['schengen'] = True
+	else:
+		parametres['schengen'] = False	
+#	parametres['schengen'] = bool(parametres['schengen'])       Почему-то всегда устанавливает True
+	parametres['average_temperature'] = int(parametres['average_temperature'])
+	parametres['currency_rate'] = float(parametres['currency_rate'])
+	parametres['cost_of_a_day'] = int(parametres['cost_of_a_day'])
+	return parametres
+
+def read_xml():
+	import xml.etree.ElementTree as ET
+	countries = {}
+	tree = ET.parse('all_countries.xml')
+	root = tree.getroot()
+	for country in root:
+		parametres = change_types(country.attrib)
+		countries[country.tag] = parametres
+	return countries
+
+answear = {'json': read_json,
+			'xml': read_xml
+		}
+
+print('Из какого формата прочитать (json, xml)?')
+file_format = input()
+
+#try:
+countries = answear[file_format]()
+#except:
+#	print('Неправильно введен формат')
+
+
+
 	
 # Как заполнить словарь
 # d = dict()
@@ -110,7 +160,7 @@ expensive_countries = set()
 for country_name, properties in countries.items():
 	if properties['cost_of_a_day'] * properties['currency_rate'] * 30 > budget:
 		expensive_countries.add(country_name)
-	if properties['average_temperature'] >= 20:
+	if properties['average_temperature'] >= 20:	
 		warm_countries.add(country_name)	
 	if properties['schengen']:
 		schengen_countries.add(country_name)

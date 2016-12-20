@@ -1,0 +1,12 @@
+{Andorra: {average_temperature: 20, cost_of_a_day: 38, currency_rate: 80.0, schengen: true,
+    sea: false}, Brazil: {average_temperature: 25, cost_of_a_day: 50, currency_rate: 20.0,
+    schengen: false, sea: true}, Chad: {average_temperature: 30, cost_of_a_day: 35000,
+    currency_rate: 0.03, schengen: false, sea: false}, Germany: {average_temperature: 5,
+    cost_of_a_day: 25, currency_rate: 80.0, schengen: true, sea: true}, Hungary: {
+    average_temperature: 10, cost_of_a_day: 3400, currency_rate: 0.3, schengen: true,
+    sea: false}, Japan: {average_temperature: 15, cost_of_a_day: 1700, currency_rate: 0.61,
+    schengen: false, sea: true}, New-Zeland: {average_temperature: 20, cost_of_a_day: 17,
+    currency_rate: 60.0, schengen: false, sea: true}, Norway: {average_temperature: -5,
+    cost_of_a_day: 40, currency_rate: 80.0, schengen: true, sea: true}, Thailand: {
+    average_temperature: 30, cost_of_a_day: 600, currency_rate: 1.8, schengen: false,
+    sea: true}}
